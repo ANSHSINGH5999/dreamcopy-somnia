@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* Light design system, fixed — not theme-toggled or system-scheme
+   dependent. Warm neutral palette: cream page background, white card
+   surfaces (pop against the cream), warm stone grays for borders/text
+   (not cool slate — matches the cream undertone), near-black for
+   headings, violet as the single accent color throughout. */
+:root {
+  --background: #faf6ed;
+  --foreground: #1c1917;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Mobile (< 768px, matching every md: breakpoint used across the app):
+   - Every button/link gets a real 44px touch target, enforced globally
+     rather than hand-added to each of the many buttons across the app —
+     this is the only way to guarantee it's actually applied everywhere.
+   - Base font size steps down ~1 Tailwind size uniformly (all rem-based
+     text scales with it), rather than editing every text-* className. */
+@media (max-width: 767px) {
+  html {
+    font-size: 93.75%; /* 16px -> 15px base */
+  }
+
+  button,
+  a[role="button"] {
+    min-height: 44px;
+  }
+
+  /* Icon-only circular/square buttons (nav toggles, modal close) already
+     size themselves via h-11 w-11 (44px) — don't let the rule above add
+     extra min-width and distort them into pills. */
+  button:has(svg:only-child) {
+    min-width: 44px;
+  }
+}

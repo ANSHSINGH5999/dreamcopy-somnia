@@ -1,0 +1,23 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+script = "script"
+solc_version = "0.8.24"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+remappings = [
+    "forge-std/=lib/forge-std/src/",
+    "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+]
+
+[rpc_endpoints]
+somnia_testnet = "${SOMNIA_TESTNET_RPC:-https://dream-rpc.somnia.network}"
+
+[etherscan]
+# Shannon explorer (Blockscout-compatible). Verify manually via the explorer UI
+# if `forge verify-contract` support for this explorer is unconfirmed.
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
