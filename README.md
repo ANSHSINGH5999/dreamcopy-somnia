@@ -1,3 +1,4 @@
+
 # DreamCopy
 
 Non-custodial copy-trading for [DreamDEX](https://docs.dreamdex.io) on Somnia testnet (chain `50312`). Followers deposit collateral into a shared, share-based vault per trader; when a followed trader fills an order on DreamDEX, an off-chain indexer detects it and mirrors a proportionally-sized trade on-chain. Funds never leave the vault contract except back to the depositor.
@@ -108,6 +109,9 @@ If you change `CopyVault.sol`, `TraderRegistry.sol`, or `ReferralRegistry.sol`, 
 7. Update addresses in `web/.env.local`, `indexer/.env`, and the fallback defaults in `indexer/src/config.ts`.
 
 Check `totalSharesOf` on the old `CopyVault` for every registered trader before redeploying — if it's non-zero, real deposits exist and a redeploy abandons them (this vault has no migration path).
+## Presentation
+
+A detailed project presentation is available in the repository: [Download Presentation](imp.pptx).
 
 ## License
 
